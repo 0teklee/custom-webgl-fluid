@@ -1,5 +1,5 @@
 {
-  "name": "webgl-fluid",
+  "name": "custom-webgl-fluid",
   "PascalCasedName": "WebGLFluid",
   "type": "commonjs",
   "version": "0.3.9",
@@ -51,7 +51,8 @@
     "lint": "eslint \"**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,json,md,html,css,scss,sass}\" --ignore-pattern stats.html",
     "lint:fix": "eslint \"**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,json,md,html,css,scss,sass}\" --ignore-pattern stats.html --fix",
     "preinstall": "node -e \"if (process.env.INIT_CWD === process.cwd()) { process.exit(1) }\" || npx only-allow pnpm",
-    "postinstall": "node -e \"if (process.env.INIT_CWD === process.cwd()) { process.exit(1) }\" || (npx simple-git-hooks && pnpm license-scan)"
+    "postinstall": "node -e \"if (process.env.INIT_CWD === process.cwd()) { process.exit(1) }\" || (npx simple-git-hooks && pnpm license-scan)",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
@@ -63,6 +64,7 @@
     "del": "^8.0.0",
     "eslint-plugin-format": "^0.1.2",
     "esno": "^4.8.0",
+    "gh-pages": "^6.1.1",
     "kolorist": "^1.8.0",
     "license-checker": "^25.0.1",
     "lint-staged": "^15.2.10",
