@@ -61,6 +61,7 @@ export default function (el, config) {
     SUNRAYS: true,
     SUNRAYS_RESOLUTION: 196,
     SUNRAYS_WEIGHT: 1.0,
+    SPLAT_COLOR: null,
     ...config,
   }
 
@@ -1572,11 +1573,23 @@ export default function (el, config) {
   }
 
   function generateColor() {
+    if (config.SPLAT_COLOR) {
+      const color = config.SPLAT_COLOR
+      return {
+        r: color.r * 0.15,
+        g: color.g * 0.15,
+        b: color.b * 0.15,
+      }
+    }
     const c = HSVtoRGB(Math.random(), 1.0, 1.0)
     c.r *= 0.15
     c.g *= 0.15
     c.b *= 0.15
     return c
+  }
+
+  function setSplatColor(rgbArray) {
+    config.SPLAT_COLOR = rgbArray
   }
 
   function HSVtoRGB(h, s, v) {
@@ -1688,5 +1701,9 @@ export default function (el, config) {
       hash |= 0 // Convert to 32bit integer
     }
     return hash
+  }
+
+  return {
+    setSplatColor,
   }
 }
