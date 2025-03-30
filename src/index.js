@@ -26,6 +26,10 @@ function ga() {
 
 }
 
+export function setSplatColor(rgbArray, config) {
+  config.SPLAT_COLOR = rgbArray
+}
+
 export default function (el, config) {
   const canvas = el
   resizeCanvas()
@@ -1588,10 +1592,6 @@ export default function (el, config) {
     return c
   }
 
-  function setSplatColor(rgbArray) {
-    config.SPLAT_COLOR = rgbArray
-  }
-
   function HSVtoRGB(h, s, v) {
     let r
     let g
@@ -1701,9 +1701,5 @@ export default function (el, config) {
       hash |= 0 // Convert to 32bit integer
     }
     return hash
-  }
-
-  return {
-    setSplatColor,
   }
 }
